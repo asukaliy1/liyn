@@ -1,8 +1,8 @@
 ---
-title: "Gasty开发使用"
-date: "2019-12-11"
+title: "Gasty开发使用（测试）"
+date: "2018-02-11"
 tag: "Gatsby,react"
-link: "20191215"
+link: "20180215"
 ---
 
 # Gasty开发使用

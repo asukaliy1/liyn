@@ -1,8 +1,8 @@
 ---
-title: "Gatsby-link学习"
-date: "2019-12-11"
+title: "Gatsby-link学习（测试）"
+date: "2018-10-12"
 tag: "Gatsby,react"
-link: "20190216"
+link: "20181012"
 ---
 
 
