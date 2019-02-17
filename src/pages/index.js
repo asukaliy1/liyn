@@ -68,7 +68,7 @@ export const query = graphql`
     site {
       ...UserInformation
     }
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
       ...PostExcert
     }
   }
