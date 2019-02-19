@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import Sidebar from "../components/sidebar";
@@ -15,8 +15,9 @@ const Paragraph = ({ location, data }) => {
     //     <Footer />
     // </div>
     // console.log(data);
-    console.log(location.pathname);
+   // console.log(location.pathname);
     const node = data.markdownRemark;
+    //console.log(node);
     return (
         <div>
             <Layout location={location}>
@@ -41,7 +42,7 @@ const Paragraph = ({ location, data }) => {
                                     </span>
                                 </h3>
 
-                                <Post rawMd={node.rawMarkdownBody} />
+                                <Post picUrl={node.frontmatter.attachments}  rawMd={node.rawMarkdownBody} />
                             </div>
 
                         </article>
@@ -69,6 +70,9 @@ export const query = graphql`
         frontmatter {
             title
             date
+            attachments {
+              publicURL
+            }
         }
         rawMarkdownBody
     }

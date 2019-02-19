@@ -6,6 +6,7 @@ import "highlight.js/styles/dracula.css";
 class CodeBlock extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.setRef = this.setRef.bind(this);
   }
 

@@ -102,7 +102,7 @@ const PostLink = ({ node, children }) => {
     text-decoration: none;
   `;
 
-  console.log(node.link);
+  //console.log(node.link);
   return node.link ? (
     // <a href={node.link} css={link} target="_blank" rel="noopener noreferrer">
     //   {children}
