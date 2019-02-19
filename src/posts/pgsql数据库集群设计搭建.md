@@ -1,15 +1,15 @@
 ---
-title: "postgis数据库服务搭建"
-date: "2019-02-18"
-tag: "gis,后端"
-link: "20181111"
-createdate: "2019-02-18"
-updatedate: "2019-02-18"
+title: "pgsql数据库集群搭建"
+date: "2019-02-19"
+tag: "pgsql,后端"
+link: "20190219"
+createdate: "2019-02-19"
+updatedate: "2019-02-19"
 attachments:
 
 ---
 
-# postgis数据库服务搭建
+# pgsql数据库集群搭建
 
 PostGIS is a spatial database extender for PostgreSQL object-relational database. It adds support for geographic objects allowing location queries to be run in SQL.
 
@@ -31,7 +31,7 @@ yum install postgresql11-server
 3. 安装完毕之后, 执行执行：`vim /etc/profile`，文件末尾添加以下内容，最后执行`source /etc/profile`
 ```sh
 export PGSQL_HOME=/usr/pgsql-11
-export PATH=$PGSQL_HOME/bin:$PATH
+export PATH=PGSQL_HOME/bin:PATH
 ```
 
 4. 初始化数据库集群，这个集群是指单机下的数据库集合，初始化后存在两个自带的数据库postgres和template1，指令如下：
@@ -48,35 +48,14 @@ chown -R user:user /var/run/postgresql
 pg_ctl -D /data/pgsql11/data -l /data/pgsql11/log/pgsql.log start
 ```
 
-7. 修改postgresql.conf
-文件位于之前创建的数据库文件夹。
-
-```
-listen_addresses = '*'
-port = 18083 
-
-log_directory = '/data/pgsql11/log'
-```
-
-8. 修改pg_hba.conf
-增加
-```
-host    all           smoke           0.0.0.0/0               trust
-```
-
-1.  基本操作
-After you’ve installed PostgreSQL, before you do anything else, you should log in as postgres and create other roles. 
+7. 基本操作
 ```sh
-
-
-
-createdb -h localhost -p 18083 gisdb #创建gisdb的数据库
-psql -h localhost -p 18083 -d gisdb #连接gisdb数据库
+createdb -h localhost -p 5432 gisdb #创建gisdb的数据库
+psql -h localhost -p 5432 -d gisdb #连接gisdb数据库
 ```
 
 ## PostGis2.5.1安装
 
-postgis是属于pgsql其中的一个插件
 ```shell
 #sudo yum install postgresql11-devel
 
@@ -86,4 +65,4 @@ sudo yum install epel-release
 
 sudo yum install postgis25_11-client.x86_64 postgis25_11.x86_64
 ```
-
+)

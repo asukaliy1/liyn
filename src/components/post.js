@@ -48,4 +48,3 @@ class Post extends Component {
 }
 
 export default Post;
-//,,code: CodeBlock

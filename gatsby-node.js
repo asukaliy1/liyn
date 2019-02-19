@@ -1,5 +1,6 @@
 
 const path = require('path');
+const createPaginatedPages = require('gatsby-paginate')
 
 // const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -22,7 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
         {
-          allMarkdownRemark {
+          allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
             edges {
               node {
                 frontmatter {
@@ -32,26 +33,42 @@ exports.createPages = ({ graphql, actions }) => {
                     link
                 }
                 rawMarkdownBody
+                excerpt
+                timeToRead
+                html
               }
             }
           }
         }
       `).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        //console.log(node.frontmatter.link);
-        // const { title,date,link} = node.frontmatter;
-        // console.log(link);
-        createPage({
-          path: node.frontmatter.link,
-          component: path.resolve(`./src/templates/paragraphs.js`),
-          //component: paragraphs,
+       // console.log(result);
+        createPaginatedPages({
+          edges: result.data.allMarkdownRemark.edges,
+          createPage: createPage,
+          pageTemplate: 'src/templates/index.js',
+          pageLength: 5, // This is optional and defaults to 10 if not used
+          pathPrefix: '', // This is optional and defaults to an empty string if not used
+          buildPath: (index, pathPrefix) => index > 1 ? `${pathPrefix}/page/${index}` : `/${pathPrefix}`,
           context: {
-            link: node.frontmatter.link,
-            attachments: node.frontmatter.attachments,
-          },
+
+          }, // This is optional and defaults to an empty object if not used
         })
-      })
-      resolve()
+
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          //console.log(node.frontmatter.link);
+          // const { title,date,link} = node.frontmatter;
+          // console.log(link);
+          createPage({
+            path: node.frontmatter.link,
+            component: path.resolve(`./src/templates/paragraphs.js`),
+            //component: paragraphs,
+            context: {
+              link: node.frontmatter.link,
+              attachments: node.frontmatter.attachments,
+            },
+          })
+        })
+        resolve()
     })
   })
 }
