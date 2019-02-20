@@ -1,9 +1,10 @@
+/** @jsx jsx */
 import axios from "axios";
 import { Link, navigate } from "gatsby";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import posed, { PoseGroup } from "react-pose";
-
-import styled, { css } from "styled-components";
+import { jsx, css } from '@emotion/core'
+import styled from '@emotion/styled'
 
 const keyCodes = {
   DOWN: 40,

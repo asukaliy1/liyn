@@ -9,7 +9,6 @@ attachments:
 
 ---
 
-# postgis数据库服务搭建
 
 PostGIS is a spatial database extender for PostgreSQL object-relational database. It adds support for geographic objects allowing location queries to be run in SQL.
 
@@ -18,17 +17,26 @@ PostGis目前最新版本为2.5.1，为了尽可能利用其功能，官方建�
 
 ## PostgreSQL11安装
 
-1. `cat /etc/redhat-release`查询系统版本，目前发现有些主机系统类型为redhat或者centos，更新源
+1. `cat /etc/redhat-release`查询系统版本，目前发现有些主机系统类型为redhat或者centos，更新源(手动下载)
 ```sh
 yum install https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-redhat11-11-2.noarch.rpm
 ```
-2. 开始安装
+or
 ```sh
-yum install postgresql11
-yum install postgresql11-server
+yum install https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
 ```
 
-3. 安装完毕之后, 执行执行：`vim /etc/profile`，文件末尾添加以下内容，最后执行`source /etc/profile`
+2. 开始安装
+手动下载
+```
+https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/postgresql11-server-11.2-1PGDG.rhel7.x86_64.rpm
+```
+```sh
+yum install postgresql11
+sudo yum install ./postgresql11-server-11.2-1PGDG.rhel7.x86_64.rpm
+```
+
+1. 安装完毕之后, 执行执行：`vim /etc/profile`，文件末尾添加以下内容，最后执行`source /etc/profile`
 ```sh
 export PGSQL_HOME=/usr/pgsql-11
 export PATH=$PGSQL_HOME/bin:$PATH
@@ -86,4 +94,23 @@ sudo yum install epel-release
 
 sudo yum install postgis25_11-client.x86_64 postgis25_11.x86_64
 ```
+
+```
+psql -h 172.16.3.2 -p 5432 -d gisdb
+
+gisdb=# CREATE EXTENSION postgis;
+CREATE EXTENSION
+gisdb=# SELECT postgis_full_version();
+                                                                                      postgis_full_version
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------
+ POSTGIS="2.5.1 r17027" [EXTENSION] PGSQL="110" GEOS="3.7.0-CAPI-1.11.0 673b9939" PROJ="Rel. 4.9.3, 15 August 2016" GDAL="GDAL 1.11.4, released 2016/01/25"
+ LIBXML="2.9.1" LIBJSON="0.11" RASTER
+(1 row)
+
+```
+## 参考Page
+
+
 

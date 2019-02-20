@@ -34,12 +34,12 @@ module.exports = {
         plugins: ['gatsby-remark-copy-linked-files'],
       },
     },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-styled-components`,
+    //   options: {
+    //     // Add any options here
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-emotion`,
       options: {

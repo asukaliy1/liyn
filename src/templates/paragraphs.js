@@ -1,27 +1,39 @@
-import React from 'react';
+
+/** @jsx jsx */
 import { graphql } from "gatsby";
-import styled from "styled-components";
 import Sidebar from "../components/sidebar";
 import Layout from "../components/layout";
 import Post from "../components/post";
+import dayjs from 'dayjs';
+import { jsx,css } from '@emotion/core';
+import styled from '@emotion/styled';
 
+
+const Title = styled.h1`
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #222;
+  font-family: -apple-system, "Microsoft YaHei", "Helvetica Neue",
+    "Hiragino Sans", "YuGothic",
+    "Hiragino Kaku Gothic ProN","Meiryo,sans-serif";
+  @media (min-width: 600px) {
+    font-size: 30px;
+  }
+`
+const blank = css`
+  margin-top: 25px;
+`
 
 const Paragraph = ({ location, data }) => {
-    // <div style={{ color: `purple` }}>
 
-    //     <Header location={location} headerText="Hello Gatsby!" />
-
-    //     {/* <img src="https://source.unsplash.com/random/400x200" alt="" /> */}
-    //     <Footer />
-    // </div>
-    // console.log(data);
-   // console.log(location.pathname);
-    const node = data.markdownRemark;
-    //console.log(node);
-    return (
-        <div>
-            <Layout location={location}>
-                {/* <Helmet title={`mottox2 blog`}>
+  const node = data.markdownRemark;
+  //console.log(node);
+  return (
+    <div>
+      <Layout location={location}>
+        {/* <Helmet title={`mottox2 blog`}>
       <meta
         name="description"
         content={
@@ -30,29 +42,44 @@ const Paragraph = ({ location, data }) => {
       />
     </Helmet> */}
 
-                <Container>
-                    <MainColumn>
-                        <article>
-                            {/* <h4>{data.allMarkdownRemark.totalCount} Posts</h4> */}
-                            <div key={node.frontmatter.id}>
-                                <h3>
+        <Container>
+          <MainColumn>
+            <article>
+              {/* <h4>{data.allMarkdownRemark.totalCount} Posts</h4> */}
+              <div key={node.frontmatter.id}>
+                {/* <h3>
                                     {node.frontmatter.title}{" "}
                                     <span style={{ color: "#bbb" }}>
                                         — {node.frontmatter.date}
                                     </span>
-                                </h3>
+                                </h3> */}
+                <time
+                  css={css`
+                display: block;
+                margin-bottom: 4px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                opacity: 0.6;
+                font-size: 15px;
+              `}
+                >
+                  {dayjs(node.frontmatter.date).format('YYYY.MM.DD')}
+                </time>
+                <Title dangerouslySetInnerHTML={{ __html: node.frontmatter.title }} />
+                {/* <Category to={`/categories/${category}`}>{category}</Category> */}
+                <div css={blank}>
+                  <Post picUrl={node.frontmatter.attachments} rawMd={node.rawMarkdownBody} />
+                </div>
+              </div>
 
-                                <Post picUrl={node.frontmatter.attachments}  rawMd={node.rawMarkdownBody} />
-                            </div>
+            </article>
 
-                        </article>
-
-                    </MainColumn>
-                    <Sidebar UserInformation={data.site.siteMetadata} />
-                </Container>
-            </Layout>
-        </div>
-    );
+          </MainColumn>
+          <Sidebar UserInformation={data.site.siteMetadata} />
+        </Container>
+      </Layout>
+    </div>
+  );
 };
 
 export const query = graphql`
@@ -79,6 +106,7 @@ export const query = graphql`
   }
 `;
 
+
 const Container = styled.div`
   /* max-width: 980px; */
   /* margin: 0 auto; */
@@ -87,6 +115,7 @@ const Container = styled.div`
   @media (min-width: 980px) {
     flex-direction: row;
   }
+  
 `;
 
 const MainColumn = styled.div`

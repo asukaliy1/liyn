@@ -5,7 +5,6 @@ tag: "pandas"
 link: "20170810"
 ---
 
-# markdowmTest
 
 Pandas are really sweet.
 

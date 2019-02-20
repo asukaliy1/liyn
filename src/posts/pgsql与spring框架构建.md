@@ -1,13 +1,14 @@
 ---
-title: "博客(猪窝)开发(1)"
-date: "2019-02-17"
+title: "pgsql和spring框架构建"
+date: "2019-02-20"
 tag: "前端"
-link: "20190217"
-createdate: "2019-02-17"
-updatedate: "2019-02-19"
+link: "20190220"
+createdate: "2019-02-20"
+updatedate: "2019-02-20"
 ---
 
- 工作闲暇之余在[freecodeCamp网站](https://learn.freecodecamp.org/)学习了React以及一些js的语法，找一个纯前端的项目练练手，于是认识了Gatsby。Gatsby在国内的名气不高，可能与Vue在国内大行其道有关🙂，先来聊聊Gatsby吧。
+
+## 博客介绍
 
 ### Gatsby
 [Gatsby](https://www.gatsbyjs.org/)是一个使用React.js , Webpack , modern JavaScript and CSS的渐进式静态网页app开发集成方案。
@@ -22,7 +23,7 @@ updatedate: "2019-02-19"
 
 
 #### 个人观点
-- 与Wordpres不同，Gatsby自动化的支持少，很多功能实现需要撸代码或者选择合适的插件，react的学习曲线比较陡峭，但是定制化也非常高；
+- 与Wordpres不同，Gatsby自动化的支持少，功能实现需要撸代码，react的学习曲线比较陡峭，但是定制化也非常高；
 - 文档数据转换页面能力非常强大，graphql可视化的能力使得查询调试非常便捷；
 - 摆脱对数据库的依赖，无需后台管理页面，数据即页面；
 - 实践react的极佳选择；
@@ -36,9 +37,9 @@ MVC架构过于笨重，纯静态页面数据整合过程发布十分不便，Ga
 - ~~分页功能的实现（基于插件）~~
 - ~~增加代码文件头~~
 - 添加路由错误页面
-- ~~对markdown中<p></p>内容进行style={{textIndent:'2em'}}渲染，实现首行缩进，要不然太丑了。。。~~,字体的调整,~~修正文章页面标题部分错误的css样式~~
+- 对markdown中<p></p>内容进行style={{textIndent:'2em'}}渲染，实现首行缩进，要不然太丑了。。。字体的调整
 - 返回按钮的设计与实现
-- 引入表情库并且支持
+- 引入表情库
 - 搜索窗口功能的实现（根据所有markdown文件生成searh.json文件，然后在该json文件中实现查找）
 - logo的svg图片制作
 - tag标签统计生成
@@ -46,4 +47,16 @@ MVC架构过于笨重，纯静态页面数据整合过程发布十分不便，Ga
 - 读取文件的更新信息，用于显示在页面中
 - favicon更新
 - 增加helmet应用
-- 增加网站公安信息
+
+
+mvn install:install-file -Dfile=kaptcha-2.3.jar -DgroupId=com.google.code.kaptcha  -DartifactId=kaptcha -Dversion=2.3  -Dpackaging=jar
+
+ <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27-SNAPSHOT</version>
+        </dependency>
+
+        mvn install:install-file -Dfile=kfastdfs-client-java-1.27-SNAPSHOT.jar -DgroupId=org.csource  -DartifactId=fastdfs-client-java -Dversion=1.27-SNAPSHOT -Dpackaging=jar
+
+        Zywlw@iot_!109)

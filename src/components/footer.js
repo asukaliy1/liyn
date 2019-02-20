@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 export default () => {
   return (
@@ -14,7 +14,7 @@ export default () => {
           </a> */}
         </Menu>
         <Copyright>
-          Copyright &copy; 2019 liy.
+          苏ICP备18041693号-1 &copy; 2019
         </Copyright>
       </Container>
     </Footer>

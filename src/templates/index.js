@@ -1,11 +1,11 @@
 
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+
 import Sidebar from "../components/sidebar";
 import Layout from "../components/layout";
 // import { jsx,css } from '@emotion/core'
-// import styled from '@emotion/styled'
+import styled from '@emotion/styled'
 import PostCell from "../components/postcell";
 import { Link } from 'gatsby'
 

@@ -5,7 +5,7 @@ import 'ress'
 import Footer from './footer'
 import Header from './header'
 
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const Template = (props) => {
   return (

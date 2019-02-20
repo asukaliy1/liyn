@@ -9,7 +9,7 @@ attachments:
 
 ---
 
-# pgsql数据库集群搭建
+
 
 PostGIS is a spatial database extender for PostgreSQL object-relational database. It adds support for geographic objects allowing location queries to be run in SQL.
 

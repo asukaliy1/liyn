@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled from '@emotion/styled'
 
 import userlogo from '../pics/avatar.jpg'
 
