@@ -33,7 +33,7 @@ class CodeBlock extends Component {
 
   render() {
     return (
-      <div css={codeblock}>
+      <div>
         <CodeFileName>test.javascript</CodeFileName>
         <div>
           <pre style={{ backgroundColor: "#1d1f21" }}>
@@ -59,15 +59,11 @@ const CodeFileName = styled.div`
   color: rgb(255, 255, 255);
   font-size: 85%;
   line-height: 1.5;
-  margin-bottom: 0px;
+  margin-bottom: 2px;
   padding: 3px 10px
 `;
 
 
-const codeblock = css`
-  display: flex;
-  flex-direction: column;
 
-`
 
 export default CodeBlock;
