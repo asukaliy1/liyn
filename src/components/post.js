@@ -1,12 +1,9 @@
 /** @jsx jsx */
 import React, { Component } from "react";
-
 import ReactMarkdown from "react-markdown";
-
 import { jsx,css } from '@emotion/core';
 import styled from '@emotion/styled'
 import 'github-markdown-css/github-markdown.css';
-
 import CodeBlock from './renders/codeblocks';
 //import Pic from './renders/pic';
 
@@ -52,13 +49,11 @@ class Post extends Component {
         <Pa>{props.children}</Pa>
       )
     }
-    return (
-     
+    return (     
       <div className="markdown-body" >     
         <ReactMarkdown source={this.props.rawMd} skipHtml={true}
           renderers={{paragraph:parag, image: Pic, code: CodeBlock }} />
-      </div>
-    
+      </div>    
     );
   }
 }
