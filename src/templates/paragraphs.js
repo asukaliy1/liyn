@@ -33,7 +33,7 @@ const Paragraph = ({ location, data }) => {
   return (
     <div>
       <Layout location={location}>
-        <Helmet title={`mottox2 blog`}>
+        <Helmet title={`liy的博客`}>
           <meta
             name="description"
             content={
