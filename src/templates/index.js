@@ -56,9 +56,9 @@ const HomePage = ({ data, location, pageContext }) => {
 
             ))}
             <Pagination>
-              {!first && <Link className='nes-btn is-primary' style={{padding:'2px 4px'}} to={previousUrl}>{'< Previous'}</Link>}
+              {!first && <Link className='nes-btn is-primary' style={{padding:'0px 2px'}} to={previousUrl}>{'< Previous'}</Link>}
               {!last && (
-                <Link  className='nes-btn is-primary' style={{ marginLeft: 'auto', padding:'2px 4px'}} to={nextUrl}>
+                <Link  className='nes-btn is-primary' style={{ marginLeft: 'auto', padding:'0px 2px'}} to={nextUrl}>
                   {'Next >'}
                 </Link>
               )}
