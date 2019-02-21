@@ -5,9 +5,9 @@ import Sidebar from "../components/sidebar";
 import Layout from "../components/layout";
 import Post from "../components/post";
 import dayjs from 'dayjs';
-import { jsx,css } from '@emotion/core';
+import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
-
+import { Helmet } from "react-helmet"
 
 const Title = styled.h1`
   font-size: 24px;
@@ -33,14 +33,15 @@ const Paragraph = ({ location, data }) => {
   return (
     <div>
       <Layout location={location}>
-        {/* <Helmet title={`mottox2 blog`}>
-      <meta
-        name="description"
-        content={
-          "mottox2のエンジニア・デザインブログ。RailsとかReactとかTypeScriptとかを中心に書いています。"
-        }
-      />
-    </Helmet> */}
+        <Helmet title={`mottox2 blog`}>
+          <meta
+            name="description"
+            content={
+              "mottox2のエンジニア・デザインブログ。RailsとかReactとかTypeScriptとかを中心に書いています。"
+            }
+          />
+          <link href="https://unpkg.com/nes.css@2.0.0/css/nes.min.css" rel="stylesheet" />
+        </Helmet>
 
         <Container>
           <MainColumn>

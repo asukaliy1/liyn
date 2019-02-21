@@ -1,13 +1,13 @@
-
-import React from "react";
+/** @jsx jsx */
 import { graphql } from "gatsby";
-
 import Sidebar from "../components/sidebar";
 import Layout from "../components/layout";
-// import { jsx,css } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import PostCell from "../components/postcell";
 import { Link } from 'gatsby'
+//require('nes.css');
+import { Helmet } from "react-helmet"
 
 
 const Container = styled.div`
@@ -28,28 +28,24 @@ const MainColumn = styled.div`
 
 
 const HomePage = ({ data, location, pageContext }) => {
-  // <div style={{ color: `purple` }}>
 
-  //     <Header location={location} headerText="Hello Gatsby!" />
-
-  //     {/* <img src="https://source.unsplash.com/random/400x200" alt="" /> */}
-  //     <Footer />
-  // </div>
   const { group, index, first, last, additionalContext } = pageContext;
   const previousUrl = index - 1 === 1 ? '/' : `/page/${index - 1}`;
   const nextUrl = `/page/${index + 1}`;
-  console.log(pageContext);
+ // console.log(pageContext);
   return (
     <div>
       <Layout location={location}>
-        {/* <Helmet title={`mottox2 blog`}>
-      <meta
-        name="description"
-        content={
-          "mottox2のエンジニア・デザインブログ。RailsとかReactとかTypeScriptとかを中心に書いています。"
-        }
-      />
-    </Helmet> */}
+        <Helmet title={`mottox2 blog`}>
+          <meta
+            name="description"
+            content={
+              "mottox2のエンジニア・デザインブログ。RailsとかReactとかTypeScriptとかを中心に書いています。"
+            }
+          />
+
+          <link href="https://unpkg.com/nes.css@2.0.0/css/nes.min.css" rel="stylesheet" />
+        </Helmet>
 
         <Container >
           <MainColumn >
@@ -60,9 +56,9 @@ const HomePage = ({ data, location, pageContext }) => {
 
             ))}
             <Pagination>
-              {!first && <Link to={previousUrl}>{'< Previous'}</Link>}
+              {!first && <Link className='nes-btn is-primary' style={{padding:'2px 4px'}} to={previousUrl}>{'< Previous'}</Link>}
               {!last && (
-                <Link style={{ marginLeft: 'auto' }} to={nextUrl}>
+                <Link  className='nes-btn is-primary' style={{ marginLeft: 'auto', padding:'2px 4px'}} to={nextUrl}>
                   {'Next >'}
                 </Link>
               )}
@@ -86,12 +82,16 @@ export const query = graphql`
   }
 `;
 
-
+//style={{ marginLeft: 'auto' }}
 const Pagination = styled.div`
   display: flex;
   width: 100%;
   margin: 24px 0;
   padding: 0 12px;
 `
+
+const btnPos = css`
+  margin-left: auto;
+`;
 
 export default HomePage;
